@@ -6,9 +6,35 @@ CURSOR = CONN.cursor()
 
 class Company():
     def __init__(self, name, founding_year, id=None):
-        self.name = name
+        self.set_name(name)
         self.founding_year = founding_year
         self.id = id
+        
+    #!Validate the properties
+    def get_name(self):
+        return self._name
+    
+    def set_name(self, new_name):
+        if type(new_name) == str and len(new_name) > 0:
+            self._name = new_name
+        else: 
+            print("name is not a string")
+            raise Exception()
+    
+    name = property(get_name, set_name)
+
+    #!Another way to make a property
+    @property
+    def founding_year(self):
+        return self._founding_year
+    
+    @founding_year.setter
+    def founding_year(self, new_year):
+        if type(new_year) == int and new_year > 0:
+            self._founding_year = new_year
+        else:
+            raise Exception("Incorrect Year")
+      
     
     # Create a table that companies get saved into:
     @classmethod

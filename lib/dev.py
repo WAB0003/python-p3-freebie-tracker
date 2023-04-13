@@ -10,6 +10,18 @@ class Dev():
     def __init__(self, name, id=None):
         self.name = name
         self.id = id
+        
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self,new_name):
+        if type(new_name) == str:
+            self._name = new_name
+        else:
+            print("Name entered is not a string")
+
     
     #* Create a table that devs get saved into:
     @classmethod

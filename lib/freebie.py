@@ -12,6 +12,29 @@ class Freebie():
         self.comp_id = comp_id
         self.dev_id = dev_id
         
+    @property
+    def item_name(self):
+        return self._item_name
+    @item_name.setter
+    def item_name(self,new_item_name):
+        if type(new_item_name)==str:
+            self._item_name = new_item_name
+        else:
+            raise Exception("Bad Item Name...")
+        
+    @property
+    def dev_id(self):
+        return self._dev_id
+    @dev_id.setter
+    def dev_id(self, dev_id):
+        all_devs = CURSOR.execute("SELECT id from devs").fetchall()
+        all_ids = [row[0] for row in all_devs]
+        if dev_id in all_ids:
+            self._dev_id = dev_id
+        else:
+            raise Exception("No Dev with id provided")
+     
+        
     #! Create a table that freebies get saved into:
     @classmethod
     def create_table(cls):
@@ -90,5 +113,7 @@ class Freebie():
     #*Aggregate Methods
     def print_details(self):
         print(f"{self.dev[1]} owns a {self.item_name} from {self.company[1]}")
+        
+        
     
     
