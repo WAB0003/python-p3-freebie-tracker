@@ -34,6 +34,13 @@ class Company():
             self._founding_year = new_year
         else:
             raise Exception("Incorrect Year")
+    
+    #!new from db
+    @classmethod
+    def new_from_db(cls, row):
+        company_row = cls(name=row[1], founding_year=row[2], id = row[0])
+        return company_row
+        
       
     
     # Create a table that companies get saved into:

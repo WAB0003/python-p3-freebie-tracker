@@ -93,7 +93,8 @@ class Freebie():
             LIMIT 1
         """
         found_company = CURSOR.execute(sql, (self.comp_id,)).fetchone()
-        return found_company
+        from company import Company
+        return Company.new_from_db(found_company)
     
     company = property(get_company)
     

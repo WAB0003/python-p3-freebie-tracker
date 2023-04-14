@@ -13,10 +13,11 @@ Company.drop_table()
 Dev.drop_table()
 Freebie.drop_table()
 
-#! Create all (3) tables to exist in the database:
+# #! Create all (3) tables to exist in the database:
 Company.create_table()
 Dev.create_table()
 Freebie.create_table()
+
 
 
 #! Create some dev instances
@@ -50,5 +51,4 @@ pen.save()
 
 
 if __name__ == '__main__':
-    # engine = create_engine('sqlite:///freebies.db')
     import ipdb; ipdb.set_trace()
